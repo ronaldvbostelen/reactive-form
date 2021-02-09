@@ -1,0 +1,17 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <label>
+    Latitude: <input formControlName="lat" type="number">
+  </label>
+  <label>
+    Longitude: <input formControlName="lon" type="number">
+  </label>
+  <input type="submit" value="Submit!" [disabled]="form.invalid">
+</form>
+
+<div>
+  {{form.value | json}}
+</div>
+<div *ngIf="form.invalid">
+  <p>Invalid Form!</p>
+</div>
+

@@ -1,0 +1,6 @@
+<app-child-input (formEvent)="addInput($event)"></app-child-input>
+
+
+<ul *ngFor="let pos of inputs">
+  <li>[Lat: {{pos.lat}}] [Long: {{pos.lon}}]</li>
+</ul>

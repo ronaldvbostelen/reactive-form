@@ -1,0 +1,17 @@
+<label>Name:
+<input type="text" [formControl]="name">
+</label>
+
+<p>changes: {{this.name.valueChanges | async}}</p>
+<p>changes: {{name.value}}</p>
+
+<button (click)="updateName()">Update name</button>
+
+<p>changelog</p>
+<ul *ngFor="let c of changeLog">
+  <li>{{c}}</li>
+</ul>
+
+<input type="text" #searchBar><br/><br/>
+
+<button #btnTest>Trigger observable</button>
