@@ -32,7 +32,7 @@ export class ValidatorComponent implements OnInit {
         ],
         alterEgo: [this.hero.alterEgo],
         power: [this.hero.power, Validators.required],
-      },{validators: identityRevealedValidator}
+      },{validators: identityRevealedValidator, updateOn: 'blur'} // blur = lost focus
     );
   }
 
