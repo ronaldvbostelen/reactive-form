@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
-
 import {Hero} from '../../models/Hero';
 import {forbiddenNameValidator} from '../../shared/forbidden-name.directive';
+import {HeroesService} from '../../models/IHeroesService';
+import {SERVICE_TOKEN} from '../../services/Tokens';
+import {NameValidatorAsync} from '../../shared/name.validator';
 import {identityRevealedValidator} from '../../shared/identity-revealed.directive';
 
 @Component({
@@ -12,17 +14,25 @@ import {identityRevealedValidator} from '../../shared/identity-revealed.directiv
 })
 export class ValidatorComponent implements OnInit {
   form: FormGroup;
-  hero: Hero = {name: '', alterEgo: '', power: ''};
+  hero: Hero = {id: 0, name: '', alterEgo: '', power: ''};
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,
+              private nameValidator: NameValidatorAsync) { }
 
   ngOnInit(): void {
     this.form = this.fb.group(
       {
-        name: [this.hero.name, [Validators.required, Validators.minLength(4), forbiddenNameValidator(/bob/i)]],
+        name: [this.hero.name,
+          Validators.compose([
+            Validators.required,
+            Validators.minLength(4),
+            forbiddenNameValidator(/bob/i)
+          ]),
+          this.nameValidator.userValidator()
+        ],
         alterEgo: [this.hero.alterEgo],
         power: [this.hero.power, Validators.required],
-      }, {validators: identityRevealedValidator}
+      },{validators: identityRevealedValidator}
     );
   }
 

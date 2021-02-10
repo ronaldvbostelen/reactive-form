@@ -18,7 +18,11 @@
   <div *ngIf="name.errors.forbiddenName">
     Name cannot contain Bob.
   </div>
+  <div *ngIf="name.errors?.userNameExists && (form.touched || form.dirty)">
+    Name in use!
+  </div>
 </div>
+
   <div *ngIf="name.valid" class="ng-valid">
     Good!
   </div>
@@ -28,3 +32,4 @@
 </div>
 
 <div>{{form.status}}</div>
+
