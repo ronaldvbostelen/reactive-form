@@ -1,0 +1,30 @@
+<div [formGroup]="form">
+  <label>Name:
+    <input id="name" class="form-control" formControlName="name" required>
+  </label><br/>
+  <label>
+    Alter ego: <input formControlName="alterEgo">
+  </label><br/>
+  <label>
+    Power: <input formControlName="power">
+  </label>
+<div *ngIf="name.invalid && (name.dirty || name.touched)" class="ng-invalid">
+  <div *ngIf="name.errors.required">
+    Name is required.
+  </div>
+  <div *ngIf="name.errors.minlength">
+    Name must be at least 4 characters long
+  </div>
+  <div *ngIf="name.errors.forbiddenName">
+    Name cannot contain Bob.
+  </div>
+</div>
+  <div *ngIf="name.valid" class="ng-valid">
+    Good!
+  </div>
+  <div *ngIf="form.errors?.identityRevealed && (form.touched || form.dirty)" class="alert alert-danger">
+    Name cannot match alter ego.
+  </div>
+</div>
+
+<div>{{form.status}}</div>

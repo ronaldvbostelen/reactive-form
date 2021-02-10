@@ -8,6 +8,7 @@ import { NameEditorComponent } from './name-editor/name-editor.component';
 import { ProfileEditorComponent } from './profile-editor/profile-editor.component';
 import { ParentInputComponent } from './input-parent-child/parent-input/parent-input.component';
 import { ChildInputComponent } from './input-parent-child/child-input/child-input.component';
+import { ValidatorComponent } from './validating/validator/validator.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ChildInputComponent } from './input-parent-child/child-input/child-inpu
     NameEditorComponent,
     ProfileEditorComponent,
     ParentInputComponent,
-    ChildInputComponent
+    ChildInputComponent,
+    ValidatorComponent,
   ],
   imports: [
     BrowserModule,
