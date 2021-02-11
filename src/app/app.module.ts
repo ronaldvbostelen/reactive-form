@@ -12,6 +12,9 @@ import { ChildInputComponent } from './input-parent-child/child-input/child-inpu
 import { ValidatorComponent } from './validating/validator/validator.component';
 import {HeroService} from './services/hero.service';
 import {SERVICE_TOKEN} from './services/Tokens';
+import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
+
+import {AppRoutingModule} from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -21,12 +24,14 @@ import {SERVICE_TOKEN} from './services/Tokens';
     ParentInputComponent,
     ChildInputComponent,
     ValidatorComponent,
+    ReactiveFormsComponent,
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    AppRoutingModule
   ],
   providers: [{provide: SERVICE_TOKEN, useClass: HeroService}],
   bootstrap: [AppComponent]

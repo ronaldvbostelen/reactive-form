@@ -1,12 +1,8 @@
-<div *ngIf="heroes$ | async">
-  <ul *ngFor="let h of heroes$ | async">
-    <li>{{h.name}}</li>
-  </ul>
-</div>
-<app-name-editor></app-name-editor>
-<hr>
-<app-profile-editor></app-profile-editor>
-<hr>
-<app-parent-input></app-parent-input>
-<hr>
-<app-validator></app-validator>
+<header>
+  <a routerLink="/">Reactive forms</a>
+  <a routerLink="/form">Dynamic Reactive form</a>
+</header>
+
+<main>
+  <router-outlet></router-outlet>
+</main>

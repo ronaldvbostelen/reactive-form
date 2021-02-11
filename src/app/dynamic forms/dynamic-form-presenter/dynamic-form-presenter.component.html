@@ -1,0 +1,17 @@
+<div>
+  <form (ngSubmit)="onSubmit()" [formGroup]="form">
+    <div *ngFor="let q of questions" class="form-row">
+      <app-dynamic-form [question]="q" [form]="form" (inputReceived)="updatePayload($event)"></app-dynamic-form>
+    </div>
+
+    <div class="form=row">
+      <button type="submit" [disabled]="(form).invalid">Save</button>
+    </div>
+  </form>
+  <div *ngIf="payLoad" class="form-row">
+    <strong>Saved the following values</strong>
+    <br>{{payLoad}}
+  </div>
+</div>
+
+
